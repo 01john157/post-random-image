@@ -1,0 +1,1 @@
+Posts a random image from a local folder to Twitter.
