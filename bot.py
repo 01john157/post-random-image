@@ -4,6 +4,7 @@ import keys
 
 # Path to the folder containing the images, recieved as a command line argument when running the script.
 image_folder_path = sys.argv[1]
+image_name_to_ignore = sys.argv[2]
 
 # Check if the specified folder exists, then change the current working directory to that folder.
 if os.path.isdir(image_folder_path):
@@ -38,7 +39,9 @@ uploaded_image = api_v1.media_upload(filename = image)
 uploaded_image_id = uploaded_image.media_id
 
 # Format the image name to remove the file extension and add quotes.
-formatted_image_name = '"' + os.path.splitext(image)[0] + '"'
+formatted_image_name = ""
+if not image.startswith(image_name_to_ignore):
+    formatted_image_name = '"' + os.path.splitext(image)[0] + '"'
 
 
 try:
