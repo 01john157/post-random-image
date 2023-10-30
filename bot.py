@@ -4,6 +4,7 @@ import keys
 
 # Path to the folder containing the images, recieved as a command line argument when running the script.
 image_folder_path = sys.argv[1]
+# Image filenames to ignore. All images whose filename starts with this string will not have the filename added to the tweet.
 image_name_to_ignore = sys.argv[2]
 
 # Check if the specified folder exists, then change the current working directory to that folder.
