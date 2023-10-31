@@ -2,13 +2,19 @@ Posts a random image from a local folder to Twitter using [Tweepy](https://www.t
 
 # Prerequisites
 Requires Python 3.7+.
-A [Twitter Developer](https://developer.twitter.com) account is required. Store the API keys in `keys.py`.
+A [Twitter Developer](https://developer.twitter.com) account is required. Store your API keys in `keys.py`.
 
 # Usage
-`python bot.py PATH_TO_IMAGE_FOLDER IMAGE_FILENAME_TO_EXCLUDE`
+`python bot.py [-h] [-append_name] [-exclude_text IMAGE_NAME_TO_EXCLUDE] [-old_text old [old ...]] [-new_text new [new ...]] image_folder_path`
 
-`PATH_TO_IMAGE_FOLDER` the path to the folder to pick images from e.g "./images/"
+positional arguments:
+  `image_folder_path`     path to the folder containing the images
 
-`IMAGE_FILENAME_TO_EXCLUDE` all images starting with this text will not have their filename appended to the tweet as text e.g. "PXL_"
+options:
+  `-h, --help`                                show help
+  `--append_name`                             append image name to the tweet
+  `--exclude_text IMAGE_NAMES_TO_EXCLUDE`     images starting with this text will not have their name appended to the Tweet
+  `--old_text old [old ...]`                  replace these strings with the corresponding --new_text strings in the image name
+  `--new_text new [new ...]`                  replace the corresponding --old_text strings in the image name
 
 See the script in use at https://twitter.com/xenoscreenshots.
