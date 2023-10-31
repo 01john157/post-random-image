@@ -25,14 +25,14 @@ parser.add_argument(
     metavar = 'old',
     dest = 'old_text',
     nargs = '+',
-    help = "replace these strings with the corresponding -new_text strings in the image name"
+    help = "replace these strings with the corresponding --new_text strings in the image name"
 )
 parser.add_argument(
     '--new_text',
     metavar = 'new',
     dest = 'new_text',
     nargs = '+',
-    help = "replace the corresponding -old_text strings in the image name"
+    help = "replace the corresponding --old_text strings in the image name"
 )
 
 # Get all the provided command line arguments.
@@ -85,7 +85,7 @@ uploaded_image_id = uploaded_image.media_id
 # Format the image name to remove the file extension, add quotes, and replace all "_" with "?" to get around Windows file name restrictions.
 formatted_image_name = ""
 if args.append_name:
-    if not image.startswith(args.image_names_to_exclude if args.image_names_to_exclude else "/"):
+    if not image.startswith(args.image_name_to_exclude if args.image_name_to_exclude else "/"):
         formatted_image_name += "".join(['"', os.path.splitext(image)[0],'"'])
         if not args.old_text == None:
             if not args.new_text == None:
