@@ -1,5 +1,3 @@
-Posts a random image from a local folder to Twitter using [Tweepy](https://www.tweepy.org/).
-
 # Prerequisites
 Requires Python 3.7+.
 A [Twitter Developer](https://developer.twitter.com) account is required. Store your API keys in `keys.py`.
