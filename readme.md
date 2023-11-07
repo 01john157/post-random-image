@@ -1,4 +1,3 @@
-# Prerequisites
 Requires [Python 3.7+](https://www.python.org/downloads/).  
 A [Twitter Developer](https://developer.twitter.com) account is required.  
 Store your API keys and access tokens in [environment variables](https://en.wikipedia.org/wiki/Environment_variable?&useskin=vector).  
