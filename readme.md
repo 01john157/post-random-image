@@ -19,4 +19,5 @@ options:
   `--old_text old [old ...]`                  replace these strings with the corresponding --new_text strings in the image name  
   `--new_text new [new ...]`                  replace the corresponding --old_text strings in the image name  
 
+# Examples
 See the script in use at https://twitter.com/xenoscreenshots.
