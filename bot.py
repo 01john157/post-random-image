@@ -1,10 +1,13 @@
 import os, argparse, random, shutil, tweepy
-import keys
 
 # Create a parser to handle the command line arguments.
 parser = argparse.ArgumentParser()
 
 # Define all the command line arguments.
+parser.add_argument('API_KEY', help = "name of the environment variable storing the API key")
+parser.add_argument('API_SECRET', help = "name of the environment variable storing the API secret")
+parser.add_argument('ACCESS_TOKEN', help = "name of the environment variable storing the access token")
+parser.add_argument('ACCESS_TOKEN_SECRET', help = "name of the environment variable storing the access token secret")
 parser.add_argument(
     'image_folder_path', 
     help = "path to the folder containing the images"
@@ -38,8 +41,28 @@ parser.add_argument(
 # Get all the provided command line arguments.
 args = parser.parse_args()
 
-
 # Check the validity of the provided command line arguments.
+API_KEY = os.getenv(args.API_KEY)
+if API_KEY == None:
+    raise Exception(
+        args.API_KEY + " is not a valid environment variable."
+    )
+API_SECRET = os.getenv(args.API_SECRET)
+if API_SECRET == None:
+    raise Exception(
+        args.API_SECRET + " is not a valid environment variable."
+    )
+ACCESS_TOKEN = os.getenv(args.ACCESS_TOKEN)
+if ACCESS_TOKEN == None:
+    raise Exception(
+        args.ACCESS_TOKEN + " is not a valid environment variable."
+    )
+ACCESS_TOKEN_SECRET = os.getenv(args.ACCESS_TOKEN_SECRET)
+if ACCESS_TOKEN_SECRET == None:
+    raise Exception(
+        args.ACCESS_TOKEN_SECRET + " is not a valid environment variable."
+    )
+
 if not os.path.isdir(args.image_folder_path):
     raise Exception(
         "Specified directory does not exist."
@@ -71,10 +94,10 @@ image = random.choice(images)
 # Authenticate for both v1.1 and v2 of the Twitter API as it is currently not possible to post a tweet with an image directly.
 # v1.1 of the API is used to upload an image. The id of this uploaded image is then appended to v2 to post a tweet with an image.
 # API keys are stored in keys.py.
-auth = tweepy.OAuth1UserHandler(keys.API_KEY, keys.API_SECRET)
-auth.set_access_token(keys.ACCESS_TOKEN, keys.ACCESS_TOKEN_SECRET)
+auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET)
+auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 api_v1 = tweepy.API(auth)
-api_v2 = tweepy.Client(consumer_key = keys.API_KEY, consumer_secret = keys.API_SECRET, access_token = keys.ACCESS_TOKEN, access_token_secret = keys.ACCESS_TOKEN_SECRET)
+api_v2 = tweepy.Client(consumer_key = API_KEY, consumer_secret = API_SECRET, access_token = ACCESS_TOKEN, access_token_secret = ACCESS_TOKEN_SECRET)
 
 
 # Upload the chosen image and retrieve its id.

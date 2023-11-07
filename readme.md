@@ -1,12 +1,17 @@
 # Prerequisites
-Requires Python 3.7+.
-A [Twitter Developer](https://developer.twitter.com) account is required. Store your API keys in `keys.py`.
+Requires [Python 3.7+](https://www.python.org/downloads/).  
+A [Twitter Developer](https://developer.twitter.com) account is required.  
+Store your API keys and access tokens in [environment variables](https://en.wikipedia.org/wiki/Environment_variable?&useskin=vector).  
 
 # Usage
-`python bot.py [-h] [-append_name] [-exclude_text IMAGE_NAME_TO_EXCLUDE] [-old_text old [old ...]] [-new_text new [new ...]] image_folder_path`
+`python bot.py [-h] [-append_name] [-exclude_text IMAGE_NAME_TO_EXCLUDE] [-old_text old [old ...]] [-new_text new [new ...]] API_KEY API_SECRET ACCESS_TOKEN ACCESS_TOKEN_SECRET image_folder_path`
 
 positional arguments:  
-  `image_folder_path`     path to the folder containing the images
+  `API_KEY`               name of the environment variable storing the API key  
+  `API_SECRET`            name of the environment variable storing the API secret  
+  `ACCESS_TOKEN`          name of the environment variable storing the access token  
+  `ACCESS_TOKEN_SECRET`   name of the environment variable storing the access token secret  
+  `image_folder_path`     path to the folder containing the images  
 
 options:  
   `-h, --help`                                show help  
