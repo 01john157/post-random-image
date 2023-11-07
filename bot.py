@@ -99,6 +99,7 @@ try:
 except Exception as e:
     print(e)
 else:
+    print("Successfully posted: " + os.getcwd() + "/" + image)
     # Move the successfully posted image into a new folder, excluding it from being posted again.
     if not os.path.isdir('posted'):
         os.mkdir('posted')
