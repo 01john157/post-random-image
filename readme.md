@@ -15,7 +15,7 @@ positional arguments:
 options:  
   `-h, --help`                                show help  
   `--append_name`                             append image name to the tweet  
-  `--quotes`                                  add quotes around the tweet text
+  `--quotes`                                  add quotes around the tweet text  
   `--exclude_text IMAGE_NAMES_TO_EXCLUDE`     images starting with this text will not have their name appended to the Tweet  
   `--old_text old [old ...]`                  replace these strings with the corresponding --new_text strings in the image name  
   `--new_text new [new ...]`                  replace the corresponding --old_text strings in the image name  
