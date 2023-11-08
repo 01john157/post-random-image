@@ -19,6 +19,12 @@ parser.add_argument(
     help = "append image name to the tweet"
 )
 parser.add_argument(
+    '--quotes',
+    dest = 'add_quotes',
+    action = 'store_true',
+    help = "add quotes around the tweet text"
+)
+parser.add_argument(
     '--exclude_text',
     dest = 'image_name_to_exclude',
     help = "images starting with this text will not have their name appended to the Tweet"
@@ -105,11 +111,13 @@ uploaded_image = api_v1.media_upload(filename = image)
 uploaded_image_id = uploaded_image.media_id
 
 
-# Format the image name to remove the file extension, add quotes, and replace all "_" with "?" to get around Windows file name restrictions.
+# Format the image name to remove the file extension and apply the specified formatting.
 formatted_image_name = ""
 if args.append_name:
     if not image.startswith(args.image_name_to_exclude if args.image_name_to_exclude else "/"):
-        formatted_image_name += "".join(['"', os.path.splitext(image)[0],'"'])
+        formatted_image_name += os.path.splitext(image)[0]
+        if args.add_quotes:
+            formatted_image_name = "".join(['"', formatted_image_name, '"'])
         if not args.old_text == None:
             if not args.new_text == None:
                 for i in range(len(args.old_text)):
